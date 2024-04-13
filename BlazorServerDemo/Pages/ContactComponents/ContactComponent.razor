@@ -1,0 +1,20 @@
+﻿<h3>Contact</h3>
+<input type="checkbox" onclick="@(()=>{displayEmail=!displayEmail;})" @bind="displayEmail" /><label>Display Email</label>
+
+@foreach (var contact in contacts)
+{
+    <ContactComponents01 contact="contact" displayEmail="displayEmail" DeleteCurrentContact="DeleteContact"></ContactComponents01>
+}
+
+@code {
+    [Parameter]
+    public List<Contact> contacts { get; set; }
+
+    public bool displayEmail = true;
+
+    public void DeleteContact(Contact contact)
+    {
+        contacts.Remove(contact);
+    }
+
+}

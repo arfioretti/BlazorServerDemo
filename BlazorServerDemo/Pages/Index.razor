@@ -1,0 +1,22 @@
+﻿@page "/"
+@using BlazorServerDemo.Models
+@using BlazorServerDemo.Pages.ContactComponents
+
+<ContactComponent contacts="contacts" ></ContactComponent>
+
+@code
+{
+    private List<Contact> contacts;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        contacts = new List<Contact>()
+        {
+            new Contact { FirstName = "Aristides", LastName = "Fioretti", Email = "arfioretti@gmail.com" },
+            new Contact { FirstName = "Aura", LastName = "Fioretti", Email = "aurafioretti@gmail.com" },
+            new Contact { FirstName = "Piliba", LastName = "Fioretti", Email = "pilibafioretti@gmail.com" },
+            new Contact { FirstName = "Carneirito", LastName = "Fioretti", Email = "carneiritofioretti@gmail.com" }
+        };
+    }   
+}

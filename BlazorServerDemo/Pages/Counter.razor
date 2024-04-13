@@ -1,0 +1,28 @@
+﻿@page "/counter"
+@using BlazorServerDemo.Pages.ContactComponents
+@using BlazorServerDemo.Models
+
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@* <ContactComponents01 FirstName="Madame" LastName="Mim" Email="madamemim@gmail.com"></ContactComponents01>
+ *@
+ <ContactComponents01 contact= "@(new Contact { FirstName="popopo", LastName="lklkllkl", Email="kkkkk"  })"></ContactComponents01>
+
+ <input type="text" @bind=currentCount />
+
+@code {
+    private int currentCount = 0;
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+
+}
