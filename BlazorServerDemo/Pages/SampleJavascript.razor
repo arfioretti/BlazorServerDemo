@@ -1,0 +1,33 @@
+﻿@page "/SampleJavascript"
+@inject IJSRuntime jsRuntime
+
+<h3>SampleJavascript</h3><br />
+<button class="btn btn-primary" @onclick="ShowAlert">Show Alert</button>
+<br />
+<br />
+<span>@rst</span>
+<button class="btn btn-primary" @onclick="ShowConfirm">Show Confirm</button>
+<br />
+<br />
+
+<button class="btn btn-primary" onclick="Callc()">javascript calling c# function</button>
+
+@code {
+    public string rst;
+
+    private void ShowAlert()
+    { 
+        jsRuntime.InvokeVoidAsync("alert", "ola ari");
+    }
+    private async Task ShowConfirm()
+    {
+        var result = await jsRuntime.InvokeAsync<bool>("confirm", "can i go on?");
+        rst = result.ToString();
+    }
+    [JSInvokable]
+    public static Task<string> Callcsharp()
+    {
+        return Task.FromResult<string>("vindo da c#");       
+    }
+
+}

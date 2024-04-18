@@ -1,0 +1,23 @@
+﻿@inject NavigationManager naviManager
+
+@page "/TestHrefAchor/{contactName}/{age:int}"
+
+<h3>TestHref</h3>
+
+<a href="./Index">Index</a>
+
+<button @onclick="NavigateToIndex">Navigate to index</button>
+
+<span>@contactName (@age)</span>
+
+@code {
+    [Parameter]
+    public string contactName { get; set; }
+    [Parameter]
+    public int age { get; set; }
+
+    private void NavigateToIndex()
+    {
+        naviManager.NavigateTo("./");
+    }
+}

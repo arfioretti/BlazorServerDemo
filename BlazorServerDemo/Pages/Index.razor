@@ -1,37 +1,21 @@
 ﻿@page "/"
+@page "/Index"
+
 @using BlazorServerDemo.Models
 @using BlazorServerDemo.Pages.ContactComponents
+
+<h1>Index Page</h1>
 
 <ContactComponent contacts="contacts" >
     <NullContact>
         <span>Loading contacts...</span>
     </NullContact>
 </ContactComponent>
+<br />
+<br />
+<a href="/TestHrefAchor">Test Href Anchor</a>
+<br />
+<br />
+<button @onclick="TestHrefAchor">TestHrefAchor</button>
 
-@code
-{
-    private List<Contact> contacts;
-    protected async override Task OnInitializedAsync()
-    {
-        await Task.Delay(5000);
-        contacts = new List<Contact>()
-        {
-            new Contact { FirstName = "Aristides", LastName = "Fioretti", Email = "arfioretti@gmail.com" },
-            new Contact { FirstName = "Aura", LastName = "Fioretti", Email = "aurafioretti@gmail.com" },
-            new Contact { FirstName = "Piliba", LastName = "Fioretti", Email = "pilibafioretti@gmail.com" },
-            new Contact { FirstName = "Carneirito", LastName = "Fioretti", Email = "carneiritofioretti@gmail.com" }
-        };
-    }
 
-    // protected override void OnInitialized()
-    // {
-    //     base.OnInitialized();
-    //     contacts = new List<Contact>()
-    //     {
-    //         new Contact { FirstName = "Aristides", LastName = "Fioretti", Email = "arfioretti@gmail.com" },
-    //         new Contact { FirstName = "Aura", LastName = "Fioretti", Email = "aurafioretti@gmail.com" },
-    //         new Contact { FirstName = "Piliba", LastName = "Fioretti", Email = "pilibafioretti@gmail.com" },
-    //         new Contact { FirstName = "Carneirito", LastName = "Fioretti", Email = "carneiritofioretti@gmail.com" }
-    //     };
-    // }   
-}

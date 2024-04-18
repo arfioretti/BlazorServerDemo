@@ -1,0 +1,35 @@
+﻿@page "/Demo01"
+
+@using BlazorServerDemo.Services
+@inject IContactService ContactService
+
+<h3>Demo01</h3>
+
+<input placeholder="first name" @bind="firstName"/><br />
+<input placeholder="last name" @bind="lastName"/><br />
+<input placeholder="email" @bind="email" /><br />
+<button class="btn btn-primary" @onclick="AddContact">Add Contact</button>
+@if(ContactService.GetContactCount() > 0 )
+{
+    foreach(var c in ContactService.GetContacts())
+    {
+        <p>@c.FirstName</p><br />
+        <p>@c.LastName</p><br />
+        <p>@c.Email</p><br />
+    }
+}
+
+@code {
+    private string firstName, lastName, email;
+    public void AddContact()
+    {
+        var contact = new Contact()
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            Email = email
+        };
+        ContactService.AddContact(contact);
+    }
+
+}
